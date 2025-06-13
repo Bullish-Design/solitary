@@ -1,0 +1,21 @@
+services:
+  projects:
+    #image: python:3.13-slim
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+    working_dir: /Projects
+    volumes:
+      - projects_data:/Projects
+    stdin_open: true
+    tty: true
+    #command: python -m http.server 8000
+    ports:
+      - "8080:8000"   # HOST:CONTAINER
+    container_name: sandbox
+
+
+volumes:
+  projects_data: {} 
