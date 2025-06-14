@@ -1,9 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "solitary"
 version = "0.1.0"
-description = "Add your description here"
+description = "Sandboxed code execution using Docker containers"
 readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Bullish-Design", email = "BullishDesignEngineering@gmail.com"},
+]
 requires-python = ">=3.12"
 dependencies = [
-    "llm-sandbox[docker]>=0.3.11",
+    "docker>=6.0.0",
+    "pydantic>=2.0.0",
 ]
+
+[project.scripts]
+solitary-example = "solitary.example2:main"
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/solitary"]
+
+
